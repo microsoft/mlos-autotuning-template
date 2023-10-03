@@ -1,0 +1,142 @@
+// vim: set ft=jsonc:
+// A slight tweak on the main MLOS .vscode/settings.json file for use with external repos housing MLOS configs for experiments.
+{
+    "makefile.extensionOutputFolder": "./.vscode",
+    // Note: this only works in WSL/Linux currently.
+    "python.defaultInterpreterPath": "${env:HOME}/.conda/envs/mlos/bin/python",
+    // For Windows it should be this instead:
+    //"python.defaultInterpreterPath": "${env:USERPROFILE}/.conda/envs/mlos/python.exe",
+    "python.testing.pytestEnabled": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pycodestyleEnabled": true,
+    "python.linting.pydocstyleEnabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": false, // use the dmypy daemon extension instead - it's faster
+    // "mypy.runUsingActiveInterpreter": true,      // in the devcontainer we override this to use an explicit path
+    "autoDocstring.docstringFormat": "numpy",
+    "json.validate.enable": true,
+    "json.schemas": [
+        // Try to use local checkout of the MLOS repo's schema definition files
+        // for validation while editing when "$schema" URL properties aren't
+        // present.
+        {
+            "fileMatch": [
+                "MLOS/mlos_bench/mlos_bench/tests/config/schemas/environments/test-cases/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/tests/config/schemas/environments/test-cases/**/*.json",
+                "MLOS/mlos_bench/mlos_bench/config/environments/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/config/environments/**/*.json",
+                "!MLOS/mlos_bench/mlos_bench/config/environments/**/*-tunables.jsonc",
+                "!MLOS/mlos_bench/mlos_bench/config/environments/**/*-tunables.json",
+                "config/environments/**/*.jsonc",
+                "config/environments/**/*.json",
+                "!config/environments/**/*-tunables.jsonc",
+                "!config/environments/**/*-tunables.json",
+            ],
+            "url": "./MLOS/mlos_bench/mlos_bench/config/schemas/environments/environment-schema.json"
+        },
+        {
+            "fileMatch": [
+                "MLOS/mlos_bench/mlos_bench/tests/config/schemas/cli/test-cases/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/tests/config/schemas/cli/test-cases/**/*.json",
+                "MLOS/mlos_bench/mlos_bench/config/cli/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/config/cli/**/*.json",
+                "config/cli/**/*.jsonc",
+                "config/cli/**/*.json"
+            ],
+            "url": "./MLOS/mlos_bench/mlos_bench/config/schemas/cli/cli-schema.json"
+        },
+        {
+            "fileMatch": [
+                "MLOS/mlos_bench/mlos_bench/config/experiments/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/config/experiments/**/*.json",
+                "MLOS/mlos_bench/mlos_bench/tests/config/experiments/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/tests/config/experiments/**/*.json",
+                "MLOS/mlos_bench/mlos_bench/tests/config/globals/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/tests/config/globals/**/*.json",
+                "globals*.jsonc",
+                "globals*.json",
+                "global*.jsonc",
+                "global*.json",
+                "config.jsonc",
+                "config.json"
+            ],
+            "url": "./MLOS/mlos_bench/mlos_bench/config/schemas/cli/globals-schema.json"
+        },
+        {
+            "fileMatch": [
+                "MLOS/mlos_bench/mlos_bench/tests/config/schemas/optimizers/test-cases/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/tests/config/schemas/optimizers/test-cases/**/*.json",
+                "MLOS/mlos_bench/mlos_bench/config/optimizers/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/config/optimizers/**/*.json",
+                "config/optimizers/**/*.jsonc",
+                "config/optimizers/**/*.json"
+            ],
+            "url": "./MLOS/mlos_bench/mlos_bench/config/schemas/optimizers/optimizer-schema.json"
+        },
+        {
+            "fileMatch": [
+                "MLOS/mlos_bench/mlos_bench/tests/config/schemas/storage/test-cases/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/tests/config/schemas/storage/test-cases/**/*.json",
+                "MLOS/mlos_bench/mlos_bench/config/storage/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/config/storage/**/*.json",
+                "config/storage/**/*.jsonc",
+                "config/storage/**/*.json"
+            ],
+            "url": "./MLOS/mlos_bench/mlos_bench/config/schemas/storage/storage-schema.json"
+        },
+        {
+            "fileMatch": [
+                "MLOS/mlos_bench/mlos_bench/tests/config/schemas/services/test-cases/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/tests/config/schemas/services/test-cases/**/*.json",
+                "MLOS/mlos_bench/mlos_bench/tests/config/services/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/tests/config/services/**/*.json",
+                "MLOS/mlos_bench/mlos_bench/config/services/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/config/services/**/*.json",
+                "config/services/**/*.jsonc",
+                "config/services/**/*.json"
+            ],
+            "url": "./MLOS/mlos_bench/mlos_bench/config/schemas/services/service-schema.json"
+        },
+        {
+            "fileMatch": [
+                "MLOS/mlos_bench/mlos_bench/tests/config/schemas/tunable-params/test-cases/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/tests/config/schemas/tunable-params/test-cases/**/*.json",
+                "MLOS/mlos_bench/mlos_bench/config/environments/**/*-tunables.jsonc",
+                "MLOS/mlos_bench/mlos_bench/config/environments/**/*-tunables.json",
+                "config/environments/**/*-tunables.jsonc",
+                "config/environments/**/*-tunables.json"
+            ],
+            "url": "./MLOS/mlos_bench/mlos_bench/config/schemas/tunables/tunable-params-schema.json"
+        },
+        {
+            "fileMatch": [
+                "MLOS/mlos_bench/mlos_bench/tests/config/schemas/tunable-values/test-cases/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/tests/config/schemas/tunable-values/test-cases/**/*.json",
+                "MLOS/mlos_bench/mlos_bench/tests/config/tunable-values/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/tests/config/tunable-values/**/*.json",
+                "MLOS/mlos_bench/mlos_bench/config/tunable-values/**/*.jsonc",
+                "MLOS/mlos_bench/mlos_bench/config/tunable-values/**/*.json",
+                "config/tunable-values/**/*.jsonc",
+                "config/tunable-values/**/*.json"
+            ],
+            "url": "./MLOS/mlos_bench/mlos_bench/config/schemas/tunables/tunable-values-schema.json"
+        }
+    ],
+    "python.formatting.provider": "autopep8",
+    "python.formatting.autopep8Args": [
+        "--experimental"
+    ],
+    "autopep8.args": [
+        "--experimental"
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python",
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "modifications"
+    },
+    "python.testing.pytestArgs": [
+        "-n1",  // don't run tests in parallel inside vscode - makes attaching the debugger more cumbersome
+        "."
+    ]
+}

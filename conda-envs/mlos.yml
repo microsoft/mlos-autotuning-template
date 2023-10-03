@@ -1,0 +1,9 @@
+# Dummy file to work around the fact that the devcontainer stashes
+# postCreateCommand metadata in its labels that it tried to rerun.
+name: mlos
+channels:
+  - defaults
+dependencies:
+  - pip
+  # the rest of this is intentionally left empty so we can reference the cloned mlos repo directly
+  # See Also: devcontainer.json

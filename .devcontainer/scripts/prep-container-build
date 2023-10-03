@@ -1,0 +1,23 @@
+#!/bin/sh
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+set -eu
+
+set -x
+
+scriptdir=$(dirname "$(readlink -f "$0")")
+# Start in the script directory.
+cd "$scriptdir"
+
+# Move up to the repo root.
+cd ../../
+
+# Make sure the .env file exists for the devcontainer to load.
+if [ ! -f .env ]; then
+    echo "Creating empty .env file for devcontainer."
+    touch .env
+fi
+
+rm -rf .devcontainer/tmp
+mkdir -p .devcontainer/tmp
