@@ -4,8 +4,8 @@ This repo is a barebones template for a developer environment with some basic sc
 
 ## Getting Started
 
-1. Fork this repository.
-1. Open this repository in VSCode.
+1. Fork this repository, or "Use Template" (preferred).
+1. Open the new repository in VSCode.
 1. Reopen in a devcontainer.
 
     > For additional dev environment details, see the devcontainer [README.md](.devcontainer/README.md)
