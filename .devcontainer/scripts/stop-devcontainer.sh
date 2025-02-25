@@ -14,7 +14,9 @@ repo_root=$(readlink -f "$scriptdir/../..")
 repo_name=$(basename "$repo_root")
 cd "$repo_root"
 
-container_name="$repo_name.$(stat -c%i "$repo_root/")"
+source ".devcontainer/common.sh"
+
+container_name="$repo_name.$(stat $STAT_FORMAT_INODE_ARGS "$repo_root/")"
 
 set -x
 
