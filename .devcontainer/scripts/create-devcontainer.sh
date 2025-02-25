@@ -14,7 +14,9 @@ repo_root=$(readlink -f "$scriptdir/../..")
 repo_name=$(basename "$repo_root")
 cd "$repo_root"
 
-container_name="$repo_name.$(stat -c%i "$repo_root/")"
+source ".devcontainer/common.sh"
+
+container_name="$repo_name.$(stat $STAT_FORMAT_INODE_ARGS "$repo_root/")"
 
 test -d MLOS || git clone --single-branch https://github.com/microsoft/MLOS.git
 GIT_SSH_COMMAND='ssh -oBatchMode=yes' GIT_TERMINAL_PROMPT=0 git -C MLOS pull
@@ -25,9 +27,9 @@ GIT_SSH_COMMAND='ssh -oBatchMode=yes' GIT_TERMINAL_PROMPT=0 git -C MLOS pull
 workspace_root=${LOCAL_WORKSPACE_FOLDER:-$repo_root}
 
 if [ -e /var/run/docker-host.sock ]; then
-    docker_gid=$(stat -c%g /var/run/docker-host.sock)
+    docker_gid=$(stat $STAT_FORMAT_GID_ARGS /var/run/docker-host.sock)
 else
-    docker_gid=$(stat -c%g /var/run/docker.sock)
+    docker_gid=$(stat $STAT_FORMAT_GID_ARGS /var/run/docker.sock)
 fi
 
 if [ "${FORCE:-}" == 'true' ]; then
