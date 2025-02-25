@@ -29,7 +29,9 @@ conda run -n mlos mlos_bench \
 function check_output() {
     local regexp="$1"
     if ! egrep -q "$regexp" "$outfile"; then
-        echo "ERROR: Failed to find '$regexp' in '$outfile'" >&2
+        echo "ERROR: Failed to find '$regexp' in '$outfile':" >&2
+        cat "$outfile" >&2
+        echo "ERROR: Failed to find '$regexp' in '$outfile'.  See above." >&2
         exit 1
     fi
 }
