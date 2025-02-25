@@ -7,12 +7,6 @@
     // For Windows it should be this instead:
     //"python.defaultInterpreterPath": "${env:USERPROFILE}/.conda/envs/mlos/python.exe",
     "python.testing.pytestEnabled": true,
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
-    "python.linting.pycodestyleEnabled": true,
-    "python.linting.pydocstyleEnabled": true,
-    "python.linting.flake8Enabled": true,
-    "python.linting.mypyEnabled": false, // use the dmypy daemon extension instead - it's faster
     // "mypy.runUsingActiveInterpreter": true,      // in the devcontainer we override this to use an explicit path
     "autoDocstring.docstringFormat": "numpy",
     "json.validate.enable": true,
@@ -123,20 +117,27 @@
             "url": "./MLOS/mlos_bench/mlos_bench/config/schemas/tunables/tunable-values-schema.json"
         }
     ],
-    "python.formatting.provider": "autopep8",
-    "python.formatting.autopep8Args": [
-        "--experimental"
-    ],
-    "autopep8.args": [
-        "--experimental"
-    ],
     "[python]": {
-        "editor.defaultFormatter": "ms-python.python",
+        "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.formatOnSave": true,
         "editor.formatOnSaveMode": "modifications"
     },
+    // See Also .vscode/launch.json for environment variable args to pytest during debug sessions.
+    // For the rest, see setup.cfg
     "python.testing.pytestArgs": [
-        "-n1",  // don't run tests in parallel inside vscode - makes attaching the debugger more cumbersome
+        "--log-level=DEBUG",
         "."
+    ],
+    "cSpell.words": [
+        "autotune",
+        "autotuning",
+        "benchbase",
+        "codespace",
+        "Codespaces",
+        "devcontainer",
+        "ipynb",
+        "llamatune",
+        "MLOS",
+        "workdir"
     ]
 }
