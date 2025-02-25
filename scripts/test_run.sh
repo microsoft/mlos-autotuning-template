@@ -57,5 +57,6 @@ if [ $trial_success_count -ne 9 ]; then
     exit 1
 fi
 
+rm -rf "$tmpdir" || true
 echo "OK"
 exit 0
