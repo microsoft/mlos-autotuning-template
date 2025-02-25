@@ -31,6 +31,9 @@ if [ -e /var/run/docker-host.sock ]; then
 else
     docker_gid=$(stat $STAT_FORMAT_GID_ARGS /var/run/docker.sock)
 fi
+if [[ $OSTYPE =~ darwin* ]]; then
+    docker_gid=0
+fi
 
 if [ "${FORCE:-}" == 'true' ]; then
     docker rm --force $container_name
