@@ -154,9 +154,27 @@ cython_debug/
 # Ignore local scope azure config files.
 .azure/
 
+.vs/
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+
+!.devcontainer/
+!.devcontainer/build/
+!.devcontainer/scripts/
+.devcontainer/tmp/
+
 # Ignore smac output directories.
 smac_output/
 
+# Ignore local working directory.
+tmp/
+workdir/
 # Ignore linked confs.
 .pylintrc
+pyproject.toml
 setup.cfg
+
+# vim swap files
+.*.swp
