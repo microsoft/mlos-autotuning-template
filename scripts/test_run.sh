@@ -37,13 +37,13 @@ function check_output() {
 }
 
 # Iteration 1: Expect first value to be the baseline
-check_output "mlos_core_optimizer\\.py:\\d+ bulk_register DEBUG Warm-up END: .* :: \\{'score': \\d+\\.\\d+\\}$"
+check_output "mlos_core_optimizer\\.py:[0-9]+ bulk_register DEBUG Warm-up END: .* :: \\{'score': [0-9]+\\.[0-9]+\\}$"
 # Iteration 2: The result may not always be deterministic
-check_output "mlos_core_optimizer\\.py:\\d+ bulk_register DEBUG Warm-up END: .* :: \\{'score': \\d+\\.\\d+\\}$"
+check_output "mlos_core_optimizer\\.py:[0-9]+ bulk_register DEBUG Warm-up END: .* :: \\{'score': [0-9]+\\.[0-9]+\\}$"
 # Iteration 3: non-deterministic (depends on the optimizer)
-check_output "mlos_core_optimizer\\.py:\\d+ bulk_register DEBUG Warm-up END: .* :: \\{'score': \\d+\\.\\d+\\}$"
+check_output "mlos_core_optimizer\\.py:[0-9]+ bulk_register DEBUG Warm-up END: .* :: \\{'score': [0-9]+\\.[0-9]+\\}$"
 # Final result: baseline is the optimum for the mock environment
-check_output "run\\.py:\\d+ _main INFO Final score: \\{'score': \d+\\.\\d+\\}\\s*$"
+check_output "run\\.py:[0-9]+ _main INFO Final score: \\{'score': [0-9]+\\.[0-9]+\\}[ ]*$"
 
 experiment_id="MockExperiment"
 storage_db="mlos_bench.sqlite"
