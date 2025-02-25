@@ -1,10 +1,10 @@
 # MLOS Autotuning Template Repo
 
-This repo is a barebones template for a developer environment with some basic scripts and configs to help do autotuning for a new target using [MLOS](https://github.com/microsoft/MLOS).
+This repo (or [the one it was forked](https://github.com/microsoft/mlos-autotuning-template) from) is a barebones template for a developer environment with some basic scripts and configs to help do autotuning for a new target using [MLOS](https://github.com/microsoft/MLOS).
 
 ## Getting Started
 
-1. Fork this repository, or "Use Template" (preferred).
+1. Fork [this repository](https://github.com/microsoft/mlos-autotuning-template), or `Use Template` (preferred).
 1. Open the new repository in VSCode.
 1. Reopen in a devcontainer.
 

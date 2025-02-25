@@ -2,7 +2,18 @@
 
 In order to make some configs reusable and easier to read, the `mlos_bench` config tree is broken up into several sections.
 
-See [`mlos_bench/README.md`](https://github.com/microsoft/MLOS/tree/main/mlos_bench/README.md) and [`mlos_bench/config/README.md`](https://github.com/microsoft/MLOS/tree/main/mlos_bench/mlos_bench/config/README.md) for additional details.
+## See Also
+
+For additional details, please also see the following:
+
+- [`mlos_bench.config`](https://microsoft.github.io/MLOS/autoapi/mlos_bench/config/index.html) module documentation.
+
+    This has an overview of the config system, some examples, and links to other details about specific modules and their capabilities.
+
+Source tree README files for each these sections:
+
+- [`mlos_bench/README.md`](https://github.com/microsoft/MLOS/tree/main/mlos_bench/README.md)
+- [`mlos_bench/config/README.md`](https://github.com/microsoft/MLOS/tree/main/mlos_bench/mlos_bench/config/README.md)
 
 ## [`cli`](./cli/)
 
