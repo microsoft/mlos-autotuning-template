@@ -1,6 +1,6 @@
 # MLOS Autotuning Template Repo
 
-[![MLOS Autotuning DevContainer](https://github.com/microsoft/mlos-autotuning-template/actions/workflows/devcontainer.yml/badge.svg)](https://github.com/microsoft/mlos-autotuning-template/actions/workflows/devcontainer.yml)
+[![MLOS Autotuning DevContainer CI](https://github.com/microsoft/mlos-autotuning-template/actions/workflows/devcontainer.yml/badge.svg)](https://github.com/microsoft/mlos-autotuning-template/actions/workflows/devcontainer.yml)
 
 This repo (or [the one it was forked](https://github.com/microsoft/mlos-autotuning-template) from) is a barebones template for a developer environment with some basic scripts and configs to help do autotuning for a new target using [MLOS](https://github.com/microsoft/MLOS).
 
