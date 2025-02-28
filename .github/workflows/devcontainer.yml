@@ -49,6 +49,10 @@ jobs:
       run: |
         ./.devcontainer/scripts/create-devcontainer.sh
 
+    - name: Run pre-commit rules in devcontainer
+      run: |
+        DOCKER_EXEC_ARGS='-i' ./.devcontainer/scripts/run-devcontainer.sh conda run -n mlos pre-commit run -a
+
     - name: Run benchmark in devcontainer
       run: |
         DOCKER_EXEC_ARGS='-i' ./.devcontainer/scripts/run-devcontainer.sh scripts/test_run.sh
