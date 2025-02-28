@@ -175,6 +175,7 @@ workdir/
 .pylintrc
 pyproject.toml
 setup.cfg
+.pre-commit-config.yaml
 
 # vim swap files
 .*.swp
