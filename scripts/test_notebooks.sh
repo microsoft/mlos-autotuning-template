@@ -1,4 +1,9 @@
 #!/bin/bash
+##
+## Copyright (c) Microsoft Corporation.
+## Licensed under the MIT License.
+##
+
 
 # This is a simple script used to test the repo in the CI pipeline.
 

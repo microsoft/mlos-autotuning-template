@@ -34,4 +34,3 @@ elif [ "$1" == "-i" ]; then
 fi
 
 docker exec $DOCKER_EXEC_ARGS "$container_name" $*
-

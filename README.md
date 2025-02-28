@@ -5,68 +5,73 @@ This repo (or [the one it was forked](https://github.com/microsoft/mlos-autotuni
 ## Getting Started
 
 1. Fork [this repository](https://github.com/microsoft/mlos-autotuning-template), or `Use Template` (preferred).
+
 1. Open the new repository in VSCode.
+
 1. Reopen in a devcontainer.
 
-    > For additional dev environment details, see the devcontainer [README.md](.devcontainer/README.md)
+   > For additional dev environment details, see the devcontainer [README.md](.devcontainer/README.md)
 
 1. Reopen the workspace.
 
-    - Browse to the [`mlos-autouning.code-workspace`](./mlos-autotuning.code-workspace) file and follow the prompt in the lower right to reopen.
+   - Browse to the [`mlos-autouning.code-workspace`](./mlos-autotuning.code-workspace) file and follow the prompt in the lower right to reopen.
 
 1. Add some configs and script to the `config/` tree.
 
-    - At a minimum you'll need to define some [`Environments`](https://github.com/microsoft/MLOS/tree/main/mlos_bench/mlos_bench/environments/README.md), typically with a top-level `CompositeEnvironment` to represent your target system and its [`Tunables`](https://github.com/microsoft/MLOS/tree/main/mlos_bench/mlos_bench/tunables/README.md) and include some [`Services`](https://github.com/microsoft/MLOS/blob/main/mlos_bench/mlos_bench/services/README.md) to help execute your workloads.
-    - See [`mlos_bench/README.md`](https://github.com/microsoft/MLOS/tree/main/mlos_bench/README.md) and [`mlos_bench/config/README.md`](https://github.com/microsoft/MLOS/tree/main/mlos_bench/mlos_bench/config/README.md) for additional details.
+   - At a minimum you'll need to define some [`Environments`](https://github.com/microsoft/MLOS/tree/main/mlos_bench/mlos_bench/environments/README.md), typically with a top-level `CompositeEnvironment` to represent your target system and its [`Tunables`](https://github.com/microsoft/MLOS/tree/main/mlos_bench/mlos_bench/tunables/README.md) and include some [`Services`](https://github.com/microsoft/MLOS/blob/main/mlos_bench/mlos_bench/services/README.md) to help execute your workloads.
+   - See [`mlos_bench/README.md`](https://github.com/microsoft/MLOS/tree/main/mlos_bench/README.md) and [`mlos_bench/config/README.md`](https://github.com/microsoft/MLOS/tree/main/mlos_bench/mlos_bench/config/README.md) for additional details.
 
 1. Activate the conda environment in the integrated terminal:
 
-    ```sh
-    conda activate mlos
-    ```
+   ```sh
+   conda activate mlos
+   ```
 
 1. Login to the Azure CLI:
 
-    ```sh
-    az login
-    ```
+   ```sh
+   az login
+   ```
 
 1. Stash some relevant auth info (e.g., subscription ID, resource group, etc.):
 
-    ```sh
-    ./MLOS/scripts/generate-azure-credentials-config.sh > global_azure_config.json
-    ```
+   ```sh
+   ./MLOS/scripts/generate-azure-credentials-config.sh > global_azure_config.json
+   ```
 
 1. Run the `mlos_bench` tool.
 
-    For instance, to run the Redis example from the upstream MLOS repo (which is pulled locally automatically by the devcontainer startup
-    scripts):
+   For instance, to run the Redis example from the upstream MLOS repo (which is pulled locally automatically by the devcontainer startup
+   scripts):
 
-    ```sh
-    mlos_bench --config "./MLOS/mlos_bench/mlos_bench/config/cli/azure-redis-opt.jsonc" --globals "./MLOS/mlos_bench/mlos_bench/config/experiments/experiment_RedisBench.jsonc" --max_iterations 10
-    ```
+   ```sh
+   mlos_bench --config "./MLOS/mlos_bench/mlos_bench/config/cli/azure-redis-opt.jsonc" --globals "./MLOS/mlos_bench/mlos_bench/config/experiments/experiment_RedisBench.jsonc" --max_iterations 10
+   ```
 
-    This should take a few minutes to run and does the following:
+   This should take a few minutes to run and does the following:
 
-    - Loads the CLI [config](https://github.com/microsoft/MLOS/tree/main/mlos_bench/mlos_bench/config/cli/azure-redis-opt.jsonc).
-        - The "experiment" [config](https://github.com/microsoft/MLOS/tree/main/mlos_bench/mlos_bench/config/experiments/experiment_RedisBench.jsonc) specified by the `--globals` parameter further customizes that config with the experiment specific parameters (e.g., telling it which tunable parameters to use for the experiment, the experiment name, etc.).
+   - Loads the CLI [config](https://github.com/microsoft/MLOS/tree/main/mlos_bench/mlos_bench/config/cli/azure-redis-opt.jsonc).
 
-            Alternatively, other config files from the `config/experiments/` directory can be referenced with the `--globals` argument as well in order to customize the experiment, while keeping the core other configs the same.
-    - The CLI config also references and loads the root Environment config for Redis.
+     - The "experiment" [config](https://github.com/microsoft/MLOS/tree/main/mlos_bench/mlos_bench/config/experiments/experiment_RedisBench.jsonc) specified by the `--globals` parameter further customizes that config with the experiment specific parameters (e.g., telling it which tunable parameters to use for the experiment, the experiment name, etc.).
 
-        - In that config the `setup` section lists commands used to
-          1. Prepare a config for the `redis` instance based on the tunable parameters specified in the experiment config,
-        - Next, the `run` section lists commands used to
-          1. Runs a basic `redis-benchmark` to exercise the instance.
-          1. assemble the results into a file that is read in the `read_results_file` config section in order to store them into the `mlos_bench` results database.
-        - Finally, since their is an optimizer specified, this process repeats 10 times to sample several different config points.
+       Alternatively, other config files from the `config/experiments/` directory can be referenced with the `--globals` argument as well in order to customize the experiment, while keeping the core other configs the same.
 
-    The overall process looks like this:
+   - The CLI config also references and loads the root Environment config for Redis.
 
-    <!-- markdownlint-disable-next-line MD033 -->
-    <img src="./doc/images/llamatune-loop.png" style="width:700px" alt="optimization loop" />
+     - In that config the `setup` section lists commands used to
+       1. Prepare a config for the `redis` instance based on the tunable parameters specified in the experiment config,
+     - Next, the `run` section lists commands used to
+       1. Runs a basic `redis-benchmark` to exercise the instance.
+       1. assemble the results into a file that is read in the `read_results_file` config section in order to store them into the `mlos_bench` results database.
+     - Finally, since their is an optimizer specified, this process repeats 10 times to sample several different config points.
 
-    > Source: [LlamaTune: VLDB 2022](https://arxiv.org/abs/2203.05128)
+   The overall process looks like this:
+
+   <!-- markdownlint-disable-next-line MD033 -->
+
+   <img src="./doc/images/llamatune-loop.png" style="width:700px" alt="optimization loop" />
+
+   > Source: [LlamaTune: VLDB 2022](https://arxiv.org/abs/2203.05128)
 
 ## See Also
 
