@@ -28,7 +28,7 @@
     "postCreateCommand": {
         "updateRepo": "set -x; cd \"${containerWorkspaceFolder}\"; ls -la; id; GIT_SSH_COMMAND=\"ssh -oBatchMode=yes\" GIT_TERMINAL_PROMPT=0 git pull || true",
         "updateMlos": "set -x; cd \"${containerWorkspaceFolder}\"; ls -la MLOS; id; GIT_SSH_COMMAND=\"ssh -oBatchMode=yes\" GIT_TERMINAL_PROMPT=0 git -C MLOS pull || true",
-        "linkStyleConfs": "set -x; cd \"${containerWorkspaceFolder}\"; for i in pyproject.toml setup.cfg; do ln -sfn MLOS/$i ./; done",
+        "linkStyleConfs": "set -x; cd \"${containerWorkspaceFolder}\"; for i in pyproject.toml setup.cfg .pre-commit-config.yaml; do ln -sfn MLOS/$i ./; done",
         "updateEnv": "set -x; cd ${containerWorkspaceFolder}/MLOS && /opt/conda/bin/conda env update -q --solver=libmamba -n mlos -f ${containerWorkspaceFolder}/MLOS/conda-envs/mlos.yml && conda run -n mlos pip install -U -r ${containerWorkspaceFolder}/requirements.txt"
     },
     // Various mounting, run, post-create, and user settings

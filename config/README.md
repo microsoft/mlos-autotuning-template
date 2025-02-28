@@ -8,7 +8,7 @@ For additional details, please also see the following:
 
 - [`mlos_bench.config`](https://microsoft.github.io/MLOS/autoapi/mlos_bench/config/index.html) module documentation.
 
-    This has an overview of the config system, some examples, and links to other details about specific modules and their capabilities.
+  This has an overview of the config system, some examples, and links to other details about specific modules and their capabilities.
 
 Source tree README files for each these sections:
 
