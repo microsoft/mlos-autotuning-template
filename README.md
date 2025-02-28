@@ -69,9 +69,11 @@ This repo (or [the one it was forked](https://github.com/microsoft/mlos-autotuni
 
    The overall process looks like this:
 
-   <!-- markdownlint-disable-next-line MD033 -->
+   <!-- markdownlint-disable MD033 -->
 
    <img src="./doc/images/llamatune-loop.png" style="width:700px" alt="optimization loop" />
+
+   <!-- markdownlint-enable MD033 -->
 
    > Source: [LlamaTune: VLDB 2022](https://arxiv.org/abs/2203.05128)
 
